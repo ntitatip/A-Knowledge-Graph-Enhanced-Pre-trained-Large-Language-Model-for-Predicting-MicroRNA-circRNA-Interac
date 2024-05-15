@@ -105,7 +105,7 @@ There are mutliple choices for visualize the results.
 '''
 python3  Plot.py -p boxplot
 '''
-![Image text](plot/final/figure1.svg)(Fig. 1.)
+![Image text](plot/final/boxplot9589.svg)(Fig. 2.)
 
 
 
