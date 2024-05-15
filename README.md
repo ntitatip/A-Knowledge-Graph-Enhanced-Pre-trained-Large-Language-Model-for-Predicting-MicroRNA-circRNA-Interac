@@ -56,6 +56,14 @@ cd .//BERT-DGI//k_difference
 python3 feature_extraction.py
 ```
 **Arguments**:
+| **Arguments** | **Detail** |
+| --- | --- |
+| **k_lst** | The required k-value to be selected |
+| **windows_size** | sliding_windows size, default as 510 |
+| **step** | sliding_windows step, default as 50 |
+| **max_sequences** | max_sequences per batch which should be setting sue to the gpu memory, default as 600 |
+
+
 
 
 ## 2，prioritize the dominant cell communication assmebly that regulates the target gene expression pattern
