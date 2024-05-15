@@ -102,31 +102,30 @@ python3 results.py
 
 ## 5，Visualization of results:
 There are mutliple choices for visualize the results.
-'''
+```
 python3  Plot.py -p boxplot
-'''
+```
 <img src="plot/final/boxplot9589.svg" alt="Fig. 2." width="500" height="300">
 
-'''
+```
 python3  Plot.py -p aucplot
-'''
-![Image text](plot/final/auc_curves9589.svg)(Fig. 3.)
+```
+<img src="plot/final/auc_curves9589.svg" alt="Fig.3." width="500" height="300">
 
-'''
+```
 python3  Plot.py -p aucplot
-'''
-![Image text](plot/final/aupr_curves9589.svg)(Fig. 2.)
+```
+<img src="plot/final/aupr_curves9589.svg" alt="Fig.3." width="500" height="300">
 
-'''
+```
 python3  Plot.py -p barplot
-'''
-![Image text](plot/final/barplot9589.svg)(Fig. 2.)
+```
+<img src="plot/final/barplot9589.svg" alt="Fig.3." width="500" height="300">
 
-'''
+```
 python3  Plot.py -p bubbleplot
-'''
-![Image text](plot/final/9589bubble.svg)(Fig. 2.)
-
+```
+<img src="plot/final/9589bubble.svg" alt="Fig.3." width="500" height="300">
 
 
 
