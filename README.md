@@ -34,7 +34,8 @@ Our method is tested to work under:
 * Other basic python toolkits
 ```
 ### Installation of other dependencies
-* Install [Networkx](https://networkx.github.io/) using ` $ pip install networkx ` if you encounter any issue. 
+* Install [Networkx](https://networkx.github.io/) using ` $ pip install networkx `
+* Install [Pyg](https://pypi.org/project/torch-geometric/) using ` $ pip install torch-geometric `
 
 
 
