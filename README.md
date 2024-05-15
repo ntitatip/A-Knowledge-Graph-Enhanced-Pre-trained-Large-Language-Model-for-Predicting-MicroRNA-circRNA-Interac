@@ -52,8 +52,8 @@ To reproduce our results:
 
 ## 1，Pre-processing the sequence into the required format
 ```
-cd .//BERT-DGI//k_difference
-python3 feature_extraction.py
+cd ./k_difference
+python3 preprocessing.py
 ```
 **Arguments**:
 | **Arguments** | **Detail** |
@@ -61,20 +61,47 @@ python3 feature_extraction.py
 | **k_lst** | The required k-value to be selected |
 | **windows_size** | sliding_windows size, default as 510 |
 | **step** | sliding_windows step, default as 50 |
-| **max_sequences** | max_sequences per batch which should be setting sue to the gpu memory, default as 600 |
 
 
-
-
-## 2，prioritize the dominant cell communication assmebly that regulates the target gene expression pattern
+## 2，fine-tuning the models
 ```
-python ./src/tutorials1/main.py --count ./data/RCC_scRNA_P76_matrix.txt --meta ./data/RCC_scRNA_P76_metadata.txt --lr_file ./output/final_lr.csv --gene CD8A --dca_rank_result ./output/CD8A_dca_rank_result.csv --ccc_ratio_result ./output/CD8A_ccc_ratio_result.csv
+cd ./k_difference
+python3 feature_extraction.py
+```
+**Arguments**:
+| **Arguments** | **Detail** |
+| --- | --- |
+| **Early_stop** | Early_stop settings, default as 5 |
+| **max_sequences** | max_sequences per batch which should be setting sue to the gpu memory, default as 600 |
+| **gpu_counts** | gpu used for training, default as 2 |
+| **models** | The list of pretrained model for fine-tuning, default as [3, 4, 5, 6] |
+
+## 2，fine-tuning the models
+```
+cd ./k_difference
+python3 feature_extraction.py
+```
+**Arguments**:
+| **Arguments** | **Detail** |
+| --- | --- |
+| **Early_stop** | Early_stop settings, default as 5 |
+| **max_sequences** | max_sequences per batch which should be setting sue to the gpu memory, default as 600 |
+| **gpu_counts** | gpu used for training, default as 2 |
+| **models** | The list of pretrained model for fine-tuning, default as [3, 4, 5, 6] |
+
+
+
+
+## 2，Embed using graph contrastive after pairwise matching of semantic features with network structures
+```
+cd ./graph_feature
+python3 results.py
 ```
 **Arguments**:
 
 | **Arguments** | **Detail** |
 | --- | --- |
-| **count** | Count matrix / normalized count matrix path. |
+| **Early_stop** | Early stop  |
 | **meta** | Meta data (celltypes annotation) path. |
 | **lr_file** | The final results of LR pairs. |
 | **gene** | The specific target gene name  |
