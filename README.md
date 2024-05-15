@@ -50,48 +50,13 @@ cmake --build . --target ALL_BUILD --config Release
 # Quick start
 To reproduce our results:
 
-## 1，infer ligand–receptor (L-R) pairs from single-cell RNA sequencing data
+## 1，Pre-processing the sequence into the required format
 ```
-cellphonedb method statistical_analysis ./data/RCC_scRNA_P76_metadata.txt ./data/RCC_scRNA_P76_matrix.txt --counts-data=gene_name --threads 100 --output-path ./output/
-```
-**Arguments**:
-
-| **Arguments** | **Detail** |
-| --- | --- |
-| **counts-data** | [ensembl or gene_name or hgnc_symbol] |
-| **threads** | Max of threads to process the data. |
-| **output-path** | Directory where the results will be allocated (the directory must exist). |
-
-```
-Rscript ./tools/run_cellchat.R --count ./data/RCC_scRNA_P76_matrix.txt --meta ./data/RCC_scRNA_P76_metadata.txt  --output ./output/
-
-# The used ligand-target matrix, lr network and weighted networks of interacting cells can be downloaded from [Zenodo](https://zenodo.org/record/7074291).
-Rscript ./tools/run_nichenet.R --count ./data/RCC_scRNA_P76_matrix.txt --meta ./data/RCC_scRNA_P76_metadata.txt  --output ./output/
-
-Rscript ./tools/run_icellnet.R --count ./data/RCC_scRNA_P76_matrix.txt --meta ./data/RCC_scRNA_P76_metadata.txt  --output ./output/
+cd .//BERT-DGI//k_difference
+python3 feature_extraction.py
 ```
 **Arguments**:
 
-| **Arguments** | **Detail** |
-| --- | --- |
-| **count** | Count matrix / normalized count matrix path. |
-| **meta** | Meta data (celltypes annotation) path. |
-| **output** | Directory where the results will be allocated. |
-
-```
-# Obtain the intersection of LR pairs output by 4 cellular communication tools, which are required to be found by at least 2 tools and have expression in scRNA-seq data.
-python ./tools/process_final_lr.py --lr_cellphonedb ./output/process_cellphonedb_lr.csv --lr_cellchat ./output/process_cellchat_lr.csv --lr_nichenet ./output/process_nichenet_lr.csv --lr_icellnet ./output/process_icellchat_lr.csv --count ./data/RCC_scRNA_P76_matrix.txt --output ./output/final_lr.csv
-```
-**Arguments**:
-
-| **Arguments** | **Detail** |
-| --- | --- |
-| **lr_cellphonedb** | The results of LR pairs output by cellphonedb. |
-| **lr_cellchat** | The results of LR pairs output by cellchat. |
-| **lr_nichenet** | The results of LR pairs output by nichenet. |
-| **lr_icellnet** | The results of LR pairs output by icellnet. |
-| **count** | Count matrix / normalized count matrix path. |
-| **output** | The final results of LR pairs. |
 
 ## 2，prioritize the dominant cell communication assmebly that regulates the target gene expression pattern
 ```
