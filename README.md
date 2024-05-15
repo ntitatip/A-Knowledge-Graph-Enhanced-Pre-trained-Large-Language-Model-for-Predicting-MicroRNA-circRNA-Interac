@@ -105,7 +105,7 @@ There are mutliple choices for visualize the results.
 '''
 python3  Plot.py -p boxplot
 '''
-![Image text](plot/final/boxplot9589.svg)(Fig. 2.)
+<img src="plot/final/boxplot9589.svg" alt="Fig. 2." width="500" height="300">
 
 '''
 python3  Plot.py -p aucplot
