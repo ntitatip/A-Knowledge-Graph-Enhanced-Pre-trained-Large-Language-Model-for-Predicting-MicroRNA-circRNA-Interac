@@ -107,6 +107,26 @@ python3  Plot.py -p boxplot
 '''
 ![Image text](plot/final/boxplot9589.svg)(Fig. 2.)
 
+'''
+python3  Plot.py -p aucplot
+'''
+![Image text](plot/final/auc_curves9589.svg)(Fig. 3.)
+
+'''
+python3  Plot.py -p aucplot
+'''
+![Image text](plot/final/aupr_curves9589.svg)(Fig. 2.)
+
+'''
+python3  Plot.py -p barplot
+'''
+![Image text](plot/final/barplot9589.svg)(Fig. 2.)
+
+'''
+python3  Plot.py -p bubbleplot
+'''
+![Image text](plot/final/9589bubble.svg)(Fig. 2.)
+
 
 
 
