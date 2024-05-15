@@ -66,7 +66,7 @@ python3 preprocessing.py
 ## 2，fine-tuning the models
 ```
 cd ./k_difference
-python3 feature_extraction.py
+python3 fine_tune.py
 ```
 **Arguments**:
 | **Arguments** | **Detail** |
@@ -76,7 +76,7 @@ python3 feature_extraction.py
 | **gpu_counts** | gpu used for training, default as 2 |
 | **models** | The list of pretrained model for fine-tuning, default as [3, 4, 5, 6] |
 
-## 2，fine-tuning the models
+## 3，Using fine-tuned model to extract sequences and post-process the vector by multiple-pooling strategy
 ```
 cd ./k_difference
 python3 feature_extraction.py
@@ -84,15 +84,11 @@ python3 feature_extraction.py
 **Arguments**:
 | **Arguments** | **Detail** |
 | --- | --- |
-| **Early_stop** | Early_stop settings, default as 5 |
-| **max_sequences** | max_sequences per batch which should be setting sue to the gpu memory, default as 600 |
+| **pooling strategy** | The strategy for pooling the circRNA vector where the choices are global average pooling, global Max pooling, default as global Max pooling |
 | **gpu_counts** | gpu used for training, default as 2 |
 | **models** | The list of pretrained model for fine-tuning, default as [3, 4, 5, 6] |
 
-
-
-
-## 2，Embed using graph contrastive after pairwise matching of semantic features with network structures
+## 4，Embed using graph contrastive after pairwise matching of semantic features with network structures
 ```
 cd ./graph_feature
 python3 results.py
@@ -101,87 +97,17 @@ python3 results.py
 
 | **Arguments** | **Detail** |
 | --- | --- |
-| **Early_stop** | Early stop  |
-| **meta** | Meta data (celltypes annotation) path. |
-| **lr_file** | The final results of LR pairs. |
-| **gene** | The specific target gene name  |
-| **dca_rank_result** | The result of prioritize the dominant cell communication assmebly that regulates the target gene expression pattern. |
-| **ccc_ratio_result** | The result of ratio of different cell types affected by cellular communication. |
+| **Early_stop** | Early stop, default as 300|
+| **learning_rate** | default as 1E-5 |
 
-Visualization of results:
-<div align="center">
-  <img src="https://github.com/jiboyalab/scDecipher/blob/main/IMG/cd8arank.png" alt="Editor" width="500">
-</div>
-
-===========================================================================
-
-<div align="center">
-  <img src="https://github.com/jiboyalab/scDecipher/blob/main/IMG/cd8adeltae.png" alt="Editor" width="400">
-</div>
-
-## 3，prioritize the dominant cell communication assmebly that regulates the key factors in specific cell type
-```
-python ./src/tutorials2/main.py --count ./data/RCC_scRNA_P76_matrix.txt --meta ./data/RCC_scRNA_P76_metadata.txt --lr_file ./output/final_lr.csv --gene FOLR2 --cell_type TAM --dca_rank_result ./output/FOLR2_dca_rank_result.csv --ccc_ratio_result ./output/FOLR2_ccc_ratio_result.csv
-```
-**Arguments**:
-
-| **Arguments** | **Detail** |
-| --- | --- |
-| **count** | Count matrix / normalized count matrix path. |
-| **meta** | Meta data (celltypes annotation) path. |
-| **lr_file** | The final results of LR pairs. |
-| **gene** | The specific target gene name.  |
-| **cell_type** | The specific cell type (TAM:tumor-associated macrophages).  |
-| **dca_rank_result** | The result of prioritize the dominant cell communication assmebly that regulates the target gene expression pattern. |
-| **ccc_ratio_result** | The result of ratio of different cell types affected by cellular communication. |
-
-Visualization of results:
-<div align="center">
-  <img src="https://github.com/jiboyalab/scDecipher/blob/main/IMG/folr2tam.png" alt="Editor" width="500">
-</div>
-
-## 4，prioritize the dominant cell communication assmebly that affected functional states of malignant cells
-```
-python ./src/tutorials3/main.py --count ./data/RCC_scRNA_P76_matrix.txt --meta ./data/RCC_scRNA_P76_metadata.txt --lr_file ./output/final_lr.csv --cell_type Malignant --cell_state EMT --dca_rank_result ./output/state_dca_rank_result.csv
-```
-**Arguments**:
-
-| **Arguments** | **Detail** |
-| --- | --- |
-| **count** | Count matrix / normalized count matrix path. |
-| **meta** | Meta data (celltypes annotation) path. |
-| **lr_file** | The final results of LR pairs. |
-| **cell_type** | The specific cell type.  |
-| **cell_state** | [Angiogenesis; Apoptosis; CellCycle; Differentiation; DNAdamage; DNArepair; EMT; Hypoxia; Inflammation; Invasion; Metastasis; Proliferation; Quiescence; Stemness.]  |
-| **dca_rank_result** | The result of prioritize the dominant cell communication assmebly that affected functional states of malignant cells. |
+## 5，Visualization of results:
+There are mutliple choices for visualize the results.
+'''
+python3  Plot.py -p boxplot
+'''
+![Image text](plot/final/figure1.svg)(Fig. 1.)
 
 
-Visualization of results:
-<div align="center">
-  <img src="https://github.com/jiboyalab/scDecipher/blob/main/IMG/cellstate.png" alt="Editor" width="500">
-</div>
-
-## 5，clinical intervertion altered effect of cell communication on gene expression
-```
-python ./src/tutorials1/main.py --count ./data/RCC_scRNA_P915_matrix.txt --meta ./data/RCC_scRNA_P915_metadata.txt --lr_file ./output/final_lr.csv --gene CD8A --dca_rank_result ./output/P915_CD8A_dca_rank_result.csv --ccc_ratio_result ./output/P915_CD8A_ccc_ratio_result.csv
-```
-**Arguments**:
-
-| **Arguments** | **Detail** |
-| --- | --- |
-| **count** | Count matrix / normalized count matrix path. |
-| **meta** | Meta data (celltypes annotation) path. |
-| **lr_file** | The final results of LR pairs. |
-| **gene** | The specific target gene name  |
-| **dca_rank_result** | The result of prioritize the dominant cell communication assmebly that regulates the target gene expression pattern. |
-| **ccc_ratio_result** | The result of ratio of different cell types affected by cellular communication. |
-
-Visualization of results:
-<div align="center">
-  <img src="https://github.com/jiboyalab/scDecipher/blob/main/IMG/cd8arankchange.png" alt="Editor" width="500">
-</div>
-
-===========================================================================
 
 
 
@@ -189,24 +115,10 @@ Visualization of results:
 
 # Contributing
 
-Jiboya Xuliwen ..
-
-# Cite
-<p align="center">
-  <a href="https://clustrmaps.com/site/1bpq2">
-     <img width="200"  src="https://clustrmaps.com/map_v2.png?cl=ffffff&w=268&t=m&d=4hIDPHzBcvyZcFn8iDMpEM-PyYTzzqGtngzRP7_HkNs" />
-   </a>
-</p>
-
-<p align="center">
-  <a href="#">
-     <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fjiboyalab%2FscDecipher&labelColor=%233499cc&countColor=%2370c168" />
-   </a>
-</p>
-
+Jiren Zhou
 
 # Contacts
-If you have any questions or comments, please feel free to email: byj@hnu.edu.cn.
+If you have any questions or comments, please feel free to email: zhoujiren@nwpu.edu.cn.
 
 # License
 
