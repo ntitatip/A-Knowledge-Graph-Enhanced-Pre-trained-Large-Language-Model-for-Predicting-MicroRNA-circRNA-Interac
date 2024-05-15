@@ -36,15 +36,15 @@ Our method is tested to work under:
 ### Installation of other dependencies
 * Install [Networkx](https://networkx.github.io/) using ` $ pip install networkx `
 * Install [PyG](https://pypi.org/project/torch-geometric/) using ` $ pip install torch-geometric `
-* Install [lightGBM](https://lightgbm.readthedocs.io/en/stable/)
-* Run the following commands in cmd:
-* git clone --recursive https://github.com/microsoft/LightGBM
+* Install [lightGBM](https://lightgbm.readthedocs.io/en/stable/) Run the following commands in cmd:
+```
+git clone --recursive https://github.com/microsoft/LightGBM
 cd LightGBM
 mkdir build
 cd build
 cmake -A x64 ..
 cmake --build . --target ALL_BUILD --config Release
-
+```
 
 
 # Quick start
