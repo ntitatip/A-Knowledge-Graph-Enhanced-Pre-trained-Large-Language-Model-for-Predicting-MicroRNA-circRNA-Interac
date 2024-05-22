@@ -132,9 +132,9 @@ python3  Plot.py -p bubbleplot
 
 
 
-# Contributing
+# Authors
 
-Jiren Zhou
+Jiren Zhou, Boya Ji, Rui Niu, Zhuhong You, Xuequn Shang
 
 # Contacts
 If you have any questions or comments, please feel free to email: zhoujiren@nwpu.edu.cn.
