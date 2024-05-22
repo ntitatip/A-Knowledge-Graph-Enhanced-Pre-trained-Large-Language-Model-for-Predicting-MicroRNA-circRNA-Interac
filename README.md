@@ -1,4 +1,4 @@
-# Predicting-circRNA-microRNA-Interactions-via-Knowledge-Graph-based-Large-Language-Model
+# A Knowledge Graph Enhanced Pre-trained Large Language Model  for Predicting MicroRNA-circRNA Interactions
 ===========================================================================
 
 
